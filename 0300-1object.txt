@@ -1,0 +1,59 @@
+,0080121001                                     TRUE ADD                0300A 0A
+,008012,019,026030L0653681001,008012,00110011B361080AB421/340080 1 OF 2 0300A 02
+,037044N000,340344,348349,357,361368/333080 PROG. CHAIN. ROUTINE 2 OF 2 0300A 03
+L057S4510012,049L0772772/2772)/40/60)/80L/892702/2702413    CARD 1 OF 3 0300A 04
+,019026,033,040044,051051/340001       TITLE PRINT ROUTINE  CARD 2 OF 3 0300A 05
+,S01S05,S12,S13S17,S18S25,S29S36,S37S41,S45/333080          CARD 3 OF 3 0300A 06
+L0313961001B389                 USE WHEN TESTS ARE RUN FROM TAPE        0300A 07
+L0314041001BS88                   ,,                                    0300A 08
+L0314081001N000                   ,,                                    0300A 09
+L0314121001M360392                ,,                                    0300A 10
+L0314191001/332                 START TEST                              0300A 11
+L0314231001/                                                            0300A 12
+L0314241001BS00S521             BR TO TITLE PRINT ROUTINE IF 1 IN S52   0300A 13
+L0314321001/080                 CLEAR READ AREA                         0300A 14
+L0314361001B348                 BRANCH TO PROGRAM CHAINING ROUTINE      0300A 15
+L0314401001,001078              LOAD PRINT AREA                         0300A 16
+L0314471001L080299                ,,                                    0300A 17
+L0314541001L072272                ,,                                    0300A 18
+L0314611001,221241                ,,                                    0300A 19
+L0314681001,202                   ,,                                    0300A 20
+L0314721001B484013S             BR TO USE SUBTRACT CODE IF S IN 013     0300A 21
+L0314801001L230270              LOAD B FIELD                            0300A 22
+L0314871001A210270              ADD WITH LIKE SIGNS                     0300A 23
+L0314941001B461B                B ON TO SCOPE                           0300A 24
+L0314991001B503                 BRANCH TO TEST FOR ERROR                0300A 25
+L0315031001L230270              LOAD B FIELD                            0300A 26
+L0315101001S210270              SUBTRACT WITH UNLIKE SIGNS              0300A 27
+L0315171001B484B                B ON TO SCOPE                           0300A 28
+L0315221001C270250              TEST FOR ERROR                          0300A 29
+L0315291001B900/                BRANCH TO ERROR PRINT ROUTINE IF UNEQ   0300A 30
+L0315341001B950C                C ON TO CORRECT PRINT ROUTINE           0300A 31
+L0315391001B958                 BRANCH TO SENSE D                       0300A 32
+L0319191001L/14285              BEGIN ERROR PRINT ROUTINE               0300A 33
+L0319261001B916E                E ON TO ERROR STOP                      0300A 34
+L03193110012958                 ERROR PRINT                             0300A 35
+L0319351001.958                 ERROR STOP                              0300A 36
+L0319391001                     WORD MARK                               0300A 37
+L0319691001L/19285              CORRECT PRINT ROUTINE                   0300A 38
+L03197610012                      ,,                                    0300A 39
+L0319771001B421D                D ON TO REPEAT                          0300A 40
+L0319821001B417                 BRANCH TO READ NEXT RECORD              0300A 41
+L031/291001ERROR                CONSTANTS                               0300A 42
+L031/341001                       ,,                                    0300A 43
+L031/391001A FIELD                ,,                                    0300A 44
+L031/591001B FIELD                ,,                                    0300A 45
+L031/791001RESULT SHOULD BE       ,,                                    0300A 46
+L031/991001RESULT IS              ,,                                    0300A 47
+,019027,031,038042B031T98"B400L046352BW04BS88   TRUE ADD                0300A 48
+E123456789  ADD OP  0000000000          0123456789                      0300A 49
+E12345678I  ADD OP  1111111101          1234567890                      0300A 50
+E12345678Z  ADD OP  2222222112          2345678901                      0300A 51
+E12345678I  ADD OP  333333222T          345678901S                      0300A 52
+E123456789  ADD OP  444443333D          456789012C                      0300A 53
+E12345678R  ADD OP  555544444N          567890123M                      0300A 54
+E12345678R  SUB OP  6665555556          6789012345                      0300A 55
+E12345678R  SUB OP  776666666G          789012345F                      0300A 56
+E123456789  SUB OP  877777777Q          890123456P                      0300A 57
+EAKTDNWGQI  SUB OP  8HQYHQYHQR          901234567Q                      0300A 58
+E 2 4 6 8   ADD OP   1 3 5 7 9          0123456789                      0300A 59

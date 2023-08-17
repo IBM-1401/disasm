@@ -1,0 +1,61 @@
+What:
+
+DisAsm:           Automatically do any of the following, or be instructed
+                  to do so by a command-line option.
+DisAsmAutocoder:  Disassemble IBM 1401 Autocoder-format object decks.
+DisAsmDump:       Disassemble dumps of 1401 memory output by simh "e -d"
+                  command.
+DisasmOnePerCard: Disassemble IBM 1401 diagnostic decks that are in
+                  one-field-per-card format.
+DisasmSevenPerCard: Disassemble IBM 1401 diagnostic decks that are in
+                  seven-field-per-card format.
+DisAsmSPS:        Disassemble IBM 1401 SPS-format object decks.
+
+Install:
+
+make all [FC=<fortran compiler>] [FOPTS=<compile options] [LDOPTS=<load options>]
+         FC defaults to lf95; FOPTS and LDOPTS default to blank
+make demo [RUNOPTS=<run options> | less
+         RUNOPTS defaults to blank
+
+Usage:
+
+Run each program with -h on the command line to get usage.
+
+Distribute:
+
+make tar zip [TAROPTS=<tar options>] [ZIPOPTS=<zip options>]
+         TAROPTS defaults to blank
+         ZIPOPTS defaults to -q
+
+Files:
+
+Manifest:          This file
+Makefile:          Make file
+CommandLine_m.f90: Analyze the command line
+DisAsm.f90         Main program to disassemble any of the five.
+DisAsmAutocoder.f90   Main program to disassemble Autocoder object decks.
+DisAsmAutocoder_m.f90 Module to disassemble Autocoder object decks.
+DisAsmDump.f90:    Main program to disassemble dumps output by simh.
+DisAsmDump_m.f90:  Module to disassemble dumps output by simh.
+DisasmOnePerCard.f90: Main program to disassemble diagnostic decks in
+                   one-field-per-card format.
+DisasmOnePerCard_m.f90: Module to disassemble diagnostic decks in
+                   one-field-per-card format.
+DisasmSevenPerCard.f90: Main program to disassemble diagnostic decks in
+                   seven-field-per-card format.
+DisasmSevenPerCard_m.f90: Module to disassemble diagnostic decks in
+                   seven-field-per-card format.
+DisAsmSPS.f90      Main program to disassemble SPS object decks.
+DisAsmSPS_m.f90    Module to disassemble SPS object decks.
+DisAsmOne_m.f90:   Disassemble one field.
+DumpCore_m.f90:    Dump core.
+Get_Addr_m.f90:    Convert 1401 address to an integer.
+op_codes_m.f90:    Tables of 1401 Autocoder op codes.
+Undump_m.f90:      Convert core to 1401 Autocoder format.
+01A6Aobject.txt    Deck for 1401 diagnostic 01A6A, in SPS format.
+0300-1object.txt:  Deck for 1401 diagnostic 0300A, in one-field-per-card format.
+0300.cd            Deck for 1401 diagnostic 0300B, Autocoder format
+0300.dmp:          Dump of 0300-1object.txt, from simh "e -d 300-1249" command.
+0300Object.txt:    Deck for 1401 diagnostic 0300B, in seven-field-per-card
+                   format.

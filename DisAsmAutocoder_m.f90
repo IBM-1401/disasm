@@ -1,0 +1,45 @@
+module DisAsmAutocoder_m
+
+! Disassemble object decks in Autocoder format.
+
+  implicit NONE
+  private
+
+  public DisAsmAutocoder
+
+contains
+
+  subroutine DisAsmAutocoder ( ShowAddr, ShowMem, Line, Title )
+
+    use DumpCore_m, only: DumpCore, Undef
+    use Read_Autocoder_m, only: Read_Autocoder
+    use Undump_m, only: Undump
+
+    logical, intent(in) :: ShowAddr ! Show addresses in 6:10; set by -a option
+    logical, intent(in) :: ShowMem  ! Show memory contents; set by -m option
+    character(100), intent(inout) :: Line ! of input or output
+    character(55), intent(in) :: Title    ! to put on JOB card
+
+    character(16000) :: Core, Wm ! Simulated 1401 memory
+
+    logical :: Any         ! Any stuff in memory?
+    integer :: EndAddr     ! In columns 41-43 of card with / in 40
+    logical :: EOF         ! Read_Autocoder got EOF
+    integer :: ExAddr      ! In columns 69-71 of card with B in 68
+
+    line(21:75) = title
+    write ( *, '(t16,"JOB",a/t16,"CTL  6611")' ) trim('  '//line(21:80))
+
+    do
+      call read_autocoder ( undef, core, wm, endAddr, exAddr, any, EOF, &
+        & firstLine = line )
+      if ( any ) then
+        if ( showMem ) call DumpCore ( Core, WM )
+        call undump ( Core, WM, showAddr, endAddr, exAddr )
+      end if
+      if ( EOF ) exit
+    end do
+
+  end subroutine DisAsmAutocoder
+
+end module DisAsmAutocoder_m
